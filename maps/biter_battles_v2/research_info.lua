@@ -173,13 +173,13 @@ function ResearchInfo.show_research_info(player)
         player.gui.center["research_info_frame"].destroy()
         return
     end
-    local frame = player.gui.center.add { type = "frame", name = "research_info_frame", direction = "vertical" }
+    local frame = player.gui.screen.add { type = "frame", name = "research_info_frame", direction = "vertical", caption = "Research Summary for Both Teams" }
+    local dragger = frame.add{type="empty-widget", style="draggable_space"}
+    dragger.style.size = {128, 24}
+    dragger.drag_target = frame
     gui_style(frame, { padding = 8 })
     local scrollpanel = frame.add { type = "scroll-pane", name = "scroll_pane", direction = "vertical", horizontal_scroll_policy = "never", vertical_scroll_policy = "auto" }
     local label
-    local horizontal_flow = scrollpanel.add { type = "flow", direction = "horizontal" }
-    label = horizontal_flow.add { type = "label", caption = "Research Summary for both teams" }
-    gui_style(label, { font = "heading-1" })
     local spacer_flow = horizontal_flow.add { type = "flow", direction = "horizontal" }
     gui_style(spacer_flow, { horizontally_stretchable = true, horizontal_align = "right" })
     local button = spacer_flow.add({
